@@ -47,16 +47,16 @@ router.post('/departments', async (req, res) => {
 });
 
 // PUT: ID option 1
-router.put('/departments/:id', async (req, res) => {
-  const { name } = req.body;
-  try {
-    await Department.updateOne({ _id: req.params.id }, { $set: { name: name }});
-    res.json({ message: 'OK' });
-  }
-  catch(err) {
-    res.status(500).json(err);
-  }
-});
+// router.put('/departments/:id', async (req, res) => {
+//   const { name } = req.body;
+//   try {
+//     await Department.updateOne({ _id: req.params.id }, { $set: { name: name }});
+//     res.json({ message: 'OK' });
+//   }
+//   catch(err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // PUT: ID option 2
 router.put('/departments/:id', async (req, res) => {
@@ -75,21 +75,21 @@ router.put('/departments/:id', async (req, res) => {
 });
 
 // PUT: ID option 3
-router.put('/departments/:id', async (req, res) => {
-  const { name } = req.body;
-  try {
-    const dep = await(Department.findById(req.params.id));
-    if(dep) {
-      dep.name = name;
-      await dep.save();
-      res.json({ message: 'OK' });
-    }
-    else res.status(404).json({ message: 'Not found...' });
-  }
-  catch(err) {
-    res.status(500).json(err);
-  }
-});
+// router.put('/departments/:id', async (req, res) => {
+//   const { name } = req.body;
+//   try {
+//     const dep = await(Department.findById(req.params.id));
+//     if(dep) {
+//       dep.name = name;
+//       await dep.save();
+//       res.json({ message: 'OK' });
+//     }
+//     else res.status(404).json({ message: 'Not found...' });
+//   }
+//   catch(err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.delete('/departments/:id', async (req, res) => {
   try {
