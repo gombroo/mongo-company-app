@@ -18,8 +18,8 @@ mongoClient.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUn
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
-    // make access to 'db' for all endpoints/files, not only for server.js
-    app.use((req, res, next) => {
+   
+    app.use((req, res, next) => {  // make 'db' available for endpoints
       req.db = db;
       next();
     });
