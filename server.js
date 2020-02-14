@@ -23,6 +23,54 @@ mongoClient.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUn
     app.use('/api', departmentsRoutes);
     app.use('/api', productsRoutes);
 
+    // find
+    db.collection('employees').find(
+      { department: 'IT' }, 
+        (err, data) => {
+          if(!err) {
+            data.each((error, employee) => {
+              console.log(employee);
+            })
+          }
+        });  
+
+    // findOne
+    db.collection('employees').findOne(
+      { department: 'IT' }, 
+        (err, data) => {
+          if(!err) {
+            console.log(data);
+          }
+        });
+
+    // insertOne
+    db.collection('departments').insertOne(
+      { name: 'Management' }, 
+        err => {
+          if(err) console.log('err');
+        });
+
+    // updateOne
+    db.collection('employees').updateOne(
+      { department: 'IT' }, 
+      { $set: { salary: 6000 }}
+    );
+
+    // updateOne + callback
+    db.collection('employees').updateOne(
+      { department: 'IT' }, 
+      { $set: { salary: 6000 }}, 
+        err => {
+          if(err) console.log(err);
+        });
+     
+    // deleteOne
+    db.collection('departments').deleteOne(
+      { name: 'Management' }, 
+        (err) => {
+          if(err) console.log(err);
+        });
+
     app.use((req, res) => {
       res.status(404).send({ message: 'Not found...' });
     })
