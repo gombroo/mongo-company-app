@@ -44,17 +44,17 @@ mongoClient.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUn
         });
 
     // insertOne
-    db.collection('departments').insertOne(
-      { name: 'Management' }, 
-        err => {
-          if(err) console.log('err');
-        });
+    // db.collection('departments').insertOne(
+    //   { name: 'Management' }, 
+    //     err => {
+    //       if(err) console.log('err');
+    //     });
 
     // updateOne
-    db.collection('employees').updateOne(
-      { department: 'IT' }, 
-      { $set: { salary: 6000 }}
-    );
+    // db.collection('employees').updateOne(
+    //   { department: 'IT' }, 
+    //   { $set: { salary: 6000 }}
+    // );
 
     // updateOne + callback
     db.collection('employees').updateOne(
