@@ -28,6 +28,11 @@ mongoClient.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUn
     app.use('/api', departmentsRoutes);
     app.use('/api', productsRoutes);
 
+    // TESTING DB
+    // db.collection('departments').insertOne({ name: 'Testing DB' }, err => {	
+    //   if(err) console.log('err');	
+    // });
+
     app.use((req, res) => {
       res.status(404).send({ message: 'Not found...' });
     });
