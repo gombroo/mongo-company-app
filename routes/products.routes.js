@@ -26,7 +26,7 @@ router.get('/products/:id', (req, res) => {
 
 router.post('/products', (req, res) => {
   const { name } = req.body;
-  req.db.collection('products').insertOne({ name: name }, err => {
+  req.db.collection('products').insertOne({ name: name, client: client }, err => {
     if(err) res.status(500).json({ message: err });
     else res.json({ message: 'OK' });
   })
@@ -34,7 +34,7 @@ router.post('/products', (req, res) => {
 
 router.put('/products/:id', (req, res) => {
   const { name } = req.body;
-  req.db.collection('products').updateOne({ _id: ObjectId(req.params.id) }, { $set: { name: name }}, err => {
+  req.db.collection('products').updateOne({ _id: ObjectId(req.params.id) }, { $set: { name: name,  client: client }}, err => {
     if(err) res.status(500).json({ message: err });
     else res.json({ message: 'OK' });
   });

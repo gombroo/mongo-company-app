@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const employeesRoutes = require('./routes/employees.routes');
-// const departmentsRoutes = require('./routes/departments.routes');
+// const employeesRoutes = require('./routes/employees.routes');
+const departmentsRoutes = require('./routes/departments.routes');
 // const productsRoutes = require('./routes/products.routes');
 
 const app = express();
@@ -12,8 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', employeesRoutes);
-// app.use('/api', departmentsRoutes);
+// app.use('/api', employeesRoutes);
+app.use('/api', departmentsRoutes);
 // app.use('/api', productsRoutes);
 
 app.use((req, res) => {
